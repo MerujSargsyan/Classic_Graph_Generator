@@ -14,4 +14,9 @@ class Vertex {
         }
         return this.x == ((Vertex)o).x && this.y == ((Vertex)o).y;
     }
+
+    @Override
+    public String toString() {
+        return "<" + this.x + " " + this.y + ">"; 
+    }
 }
