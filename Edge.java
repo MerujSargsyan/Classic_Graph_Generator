@@ -9,9 +9,16 @@ class Edge {
 
     @Override
     public boolean equals(Object o) {
-        if(o == null) {
+        if(o == null || !(o instanceof Edge)) {
             return false;
         }
-        return start.equals(end) || end.equals(start);
+        Edge e = (Edge)o;
+        return start.equals(e.start) && end.equals(e.end) || 
+            end.equals(e.start) && start.equals(e.end);
+    }
+
+    @Override
+    public String toString() {
+        return start.toString() + " --> " + end.toString();
     }
 }
