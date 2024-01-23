@@ -20,26 +20,23 @@ class CompleteGraph extends Graph {
         int[] divisors = getDivisors(numVertecies);
         double currentClosest = Integer.MAX_VALUE; // aspect ratio closest to 1
 
-        ArrayList<Integer> rowCounts = new ArrayList<Integer>();
+        int rows = 0;
+        int cols = 0;
+
         for(int i = 0; i < divisors.length; i++) {
             double tempR = numVertecies / divisors[i];
             double tempC = numVertecies / tempR;
             double aspectRatio = tempC / tempR;
 
             if(Math.abs(aspectRatio - 1) < currentClosest) {
-                System.out.println(rowCounts);
-                rowCounts.clear();
-                if(tempC % 10 > 0) {
-                    rowCounts.add((int)Math.ceil(tempC));
-                } else {
-                    rowCounts.add((int)Math.floor(tempC));
-                }
                 currentClosest = Math.abs(aspectRatio-1);
+                rows = (int)Math.round(tempR);
+                cols = (int)Math.round(tempC);
             }
         }
 
-        for(int i = 0; i < rowCounts.size(); i++) {
-            for(int j = 0; j < rowCounts.get(i); j++) {
+        for(int i = 0; i < rows; i++) {
+            for(int j = 0; j < cols; j++) {
                 vertecies.add(new Vertex(STARTING_COL + j * OFFSET, 
                     STARTING_ROW + i * OFFSET));
             }
