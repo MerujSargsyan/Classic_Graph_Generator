@@ -6,45 +6,61 @@ class CompleteGraph extends Graph {
     private final int STARTING_COL = 50;
     private final int OFFSET = 50;
     private final int MAX_COL = Display.WINDOW_SIZE_X - OFFSET;
-    private final int AVAILABLE_SPACES = MAX_COL/OFFSET;
-
-    private int currentCol;
-    private int currentRow;
 
     CompleteGraph(int numVertecies) {
         super();
         this.numVertecies = numVertecies;
-        this.currentCol = STARTING_COL;
-        this.currentRow = STARTING_ROW;
         this.generateVertecies(numVertecies);
         this.generateEdges();
         this.displayGraph(new Display(this));
-        System.out.println(AVAILABLE_SPACES);
     }
 
     @Override
     void generateVertecies(int numVertecies) {
-        int totalCount = numVertecies;
-        double neccRowCount = totalCount / AVAILABLE_SPACES;
-        double countPerRow = totalCount / Math.floor(neccRowCount);
+        int[] divisors = getDivisors(numVertecies);
+        double currentClosest = Integer.MAX_VALUE; // aspect ratio closest to 1
 
-        int[] rowCounts = new int[(int)neccRowCount];
-        if(countPerRow % 10 > 0) {
-            rowCounts[0] = (int)Math.ceil(countPerRow);
-        } else {
-            rowCounts[0] = (int)Math.floor(countPerRow);
+        ArrayList<Integer> rowCounts = new ArrayList<Integer>();
+        for(int i = 0; i < divisors.length; i++) {
+            double tempR = numVertecies / divisors[i];
+            double tempC = numVertecies / tempR;
+            double aspectRatio = tempC / tempR;
+
+            if(Math.abs(aspectRatio - 1) < currentClosest) {
+                System.out.println(rowCounts);
+                rowCounts.clear();
+                if(tempC % 10 > 0) {
+                    rowCounts.add((int)Math.ceil(tempC));
+                } else {
+                    rowCounts.add((int)Math.floor(tempC));
+                }
+                currentClosest = Math.abs(aspectRatio-1);
+            }
         }
-        for(int i = 1; i < neccRowCount; i++) {
-            rowCounts[i] = (int)Math.floor(countPerRow);
-        }
-        
-        for(int i = 0; i < neccRowCount; i++) {
-            int rowSize = rowCounts[i];
-            for(int j = 0; j < rowSize; j++) {
-                vertecies.add(new Vertex(currentCol + j * OFFSET, 
+
+        for(int i = 0; i < rowCounts.size(); i++) {
+            for(int j = 0; j < rowCounts.get(i); j++) {
+                vertecies.add(new Vertex(STARTING_COL + j * OFFSET, 
                     STARTING_ROW + i * OFFSET));
             }
         }
+    }
+
+    int[] getDivisors(int num) {
+        ArrayList<Integer> listOut = new ArrayList<>();
+        for(int i = 1; i <= num; i++) {
+            if(num % i == 0) {
+                listOut.add(i);
+            }
+        }
+        
+
+        int[] resultArray = new int[listOut.size()];
+        for (int i = 0; i < listOut.size(); i++) {
+            resultArray[i] = listOut.get(i);
+        }
+
+        return resultArray;
     }
 
     @Override 
