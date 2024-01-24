@@ -1,3 +1,9 @@
+/** 
+ * Simple class used to create a display of constant size with black background
+ *
+ * @author Meruzhan Sargsyan
+ */
+
 import java.awt.*;
 import javax.swing.*;
 
@@ -8,6 +14,9 @@ class Display extends JFrame{
     public static int WINDOW_SIZE_Y = 500;
     private int BONUS_X_SPACE = 50;
 
+    /** 
+     * initializes frame and panel using constants and DrawPanel class
+     */
     Display(Graph g) {
         frame = new JFrame();
         frame.setSize(WINDOW_SIZE_X + BONUS_X_SPACE, WINDOW_SIZE_Y);
@@ -21,6 +30,9 @@ class Display extends JFrame{
         frame.add(panel);
     }
 
+    /** 
+     * simple method that makes the display visible
+     */
     void showDisplay() {
         frame.setVisible(true);
     }

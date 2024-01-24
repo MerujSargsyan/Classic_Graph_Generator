@@ -1,3 +1,11 @@
+/**
+ * A classic graph that has a specific name where every vertex is connected to
+ * every other vertex. 
+ *
+ * Ex: V = {1, 2, 3} E = {{1,2}, {1,3}, {2,3}}
+ *
+ * @author Meruzhan Sargsyan
+ */
 import java.util.ArrayList;
 
 class CompleteGraph extends Graph {
@@ -7,14 +15,29 @@ class CompleteGraph extends Graph {
     private final int OFFSET = 50;
     private final int MAX_COL = Display.WINDOW_SIZE_X - OFFSET;
 
+    /**
+     * uses superclass constructor to initialize vertex and edge ArrayLists
+     * uses helper method to generate vertecies and edges and initializes the
+     *    display
+     *
+     * @param numVertecies int number of vertecies in the vertex set
+     */
     CompleteGraph(int numVertecies) {
         super();
         this.numVertecies = numVertecies;
-        this.generateVertecies(numVertecies);
-        this.generateEdges();
-        this.displayGraph(new Display(this));
+        generateVertecies(numVertecies);
+        generateEdges();
+        displayGraph(new Display(this), this);
     }
 
+    /** 
+     * overrides the generateVertecies method of the Graph superclass
+     * creates the vertex set by taking the numVertecies and arranging them on
+     * the grid of display
+     *
+     * @param numVertecies int number of vertecies that should be in the vertex
+     *    set
+     */
     @Override
     void generateVertecies(int numVertecies) {
         int[] divisors = getDivisors(numVertecies);
@@ -43,6 +66,12 @@ class CompleteGraph extends Graph {
         }
     }
 
+    /**
+     * helper method for positioning vertecies
+     * returns an array of the divisors of the parameter
+     *
+     * @param num int number to find all divisors of  
+     */
     int[] getDivisors(int num) {
         ArrayList<Integer> listOut = new ArrayList<>();
         for(int i = 1; i <= num; i++) {
@@ -60,6 +89,10 @@ class CompleteGraph extends Graph {
         return resultArray;
     }
 
+    /** 
+     * overrides the generateEdges method of the Graph superclass
+     * creates edges from every vertex to every other vertex (without duplicates)
+     */
     @Override 
     void generateEdges() {
         for(Vertex v0 : vertecies) {
@@ -72,10 +105,5 @@ class CompleteGraph extends Graph {
                 }
             }
         }
-    }
-
-    @Override
-    void displayGraph(Display d) {
-        d.showDisplay();
     }
 }

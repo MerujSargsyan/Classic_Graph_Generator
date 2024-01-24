@@ -1,3 +1,9 @@
+/**
+ * Cusom implementation of a JPanel used to draw vertecies and edges to a 
+ * display in a custom way
+ *
+ * @author Meruzhan Sargsyan
+ */
 import java.awt.*;
 import javax.swing.*;
 import java.util.ArrayList;
@@ -14,6 +20,13 @@ class DrawPanel extends JPanel {
     private final int VERTEX_SIZE = 25;
     private final int CENTER_ADJUSTMENT = 12; //adjust circle around vertex
 
+    /** 
+     * Creates a panel to draw on, creating the settings based on the above
+     * constants.
+     * Sets the instance fields vertecies and edges to those of the graph
+     *
+     * @param Graph g to draw on the Panel
+     */
     DrawPanel(Graph g) {
         this.vertecies = g.vertecies;
         this.edges = g.edges;
@@ -29,6 +42,12 @@ class DrawPanel extends JPanel {
         this.repaint();
     }
 
+    /** 
+     * Overrides the paintComponent method of the JPanel superclass
+     * simply uses helper methods to print edges and vertecies
+     *
+     * @param Graphics g graphic component to use to draw
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -42,11 +61,25 @@ class DrawPanel extends JPanel {
         }
     }
 
+    /**
+     * helper method for paint component
+     * draws a circle on the panel centered at a vertex using size constants
+     *
+     * @param Vertex v to center the point at
+     * @param Graphics g used to draw the point
+     */
     void paintVertex(Vertex v, Graphics g) {
         g.fillRoundRect(v.x - CENTER_ADJUSTMENT, v.y - CENTER_ADJUSTMENT, 
             VERTEX_SIZE, VERTEX_SIZE, VERTEX_SIZE, VERTEX_SIZE);
     }
 
+    /**
+     * helper method for paint component
+     * draws a line on the panel from starting point of edge to ending point
+     *
+     * @param Edge e that connect its starting point to ending point
+     * @param Graphics g used to draw the line
+     */
     void paintEdge(Edge e, Graphics g) {
         g.drawLine(e.start.x, e.start.y, e.end.x, e.end.y);
     }
