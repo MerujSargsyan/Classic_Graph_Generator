@@ -41,7 +41,7 @@ abstract class Graph {
      * @param Graph graph to show on display
      */
     void displayGraph(Display d, Graph g) {
-        d.display(g);
+        d.showDisplay();
     }
 
     /** 

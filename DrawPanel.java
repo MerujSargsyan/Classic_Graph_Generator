@@ -7,6 +7,7 @@
 import java.awt.*;
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 class DrawPanel extends JPanel {
     ArrayList<Vertex> vertecies;
@@ -19,6 +20,10 @@ class DrawPanel extends JPanel {
 
     private final int VERTEX_SIZE = 25;
     private final int CENTER_ADJUSTMENT = 12; //adjust circle around vertex
+
+    private final int LINE_DOT_COUNT = 100;
+    private final int LINE_WIDTH = 2;
+    private final int CURVE_FACTOR = 5;
 
     /** 
      * Creates a panel to draw on, creating the settings based on the above
