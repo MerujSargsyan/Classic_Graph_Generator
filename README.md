@@ -1,7 +1,7 @@
 # Classic_Graph_Generator
 Generates classic graphs in graph theory such as connected graphs, trees, de Brujin cycles, etc.
 
-Brief Class explainations: 
+Brief Class explainations:
     - Display.java:   Creates a square display with black background. Then uses DrawPanel.java to draw given vertecies and edges.
     - DrawPanel.java: Helper class for display which uses java swing Graphics to draw on Display
     - Graph.java:     Abstract class which sets a basis for all other child graphs. Stroes vertex and edge sets.
