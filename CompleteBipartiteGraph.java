@@ -9,6 +9,7 @@
 * @author Meruzhan Sargsyan
 */
 import java.util.ArrayList;
+import java.lang.Exception;
 
 class CompleteBipartiteGraph extends Graph {
     private int Asize;
@@ -28,8 +29,12 @@ class CompleteBipartiteGraph extends Graph {
      * @param Asize int size of part A (left column)
      * @param Bsize int size of part B (right column)
      */
-    BipartiteGraph(int Asize, int Bsize) {
+    CompleteBipartiteGraph(int Asize, int Bsize) throws Exception{
         super();
+        if(Asize > 10 || Bsize > 10) {
+            System.out.println("Please limit the groups to up to 10 vertecies");
+            throw new Exception("Invalid Input");
+        }
         this.Asize = Asize;
         this.Bsize = Bsize;
         generateVertecies(Asize + Bsize);
