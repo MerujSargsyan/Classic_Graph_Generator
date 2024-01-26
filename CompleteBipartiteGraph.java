@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-class BipartiteGraph extends Graph {
+class CompleteBipartiteGraph extends Graph {
     private int Asize;
     private int Bsize;
 
@@ -9,12 +9,13 @@ class BipartiteGraph extends Graph {
     private final int STARTING_ROW = 50;
     private final int ROW_SPACING = 50;
 
-    BipartiteGraph(int Asize, int Bsize, ArrayList<Edge> edges) {
+    BipartiteGraph(int Asize, int Bsize) {
         super();
         this.Asize = Asize;
         this.Bsize = Bsize;
-        this.edges = edges;
         generateVertecies(Asize + Bsize);
+        generateEdges();
+        displayGraph(new Display(this), this);
     }
 
     @Override
@@ -33,6 +34,12 @@ class BipartiteGraph extends Graph {
     } 
 
     @Override 
-    void generateEdges() {}; // does nothing
+    void generateEdges() {
+        for(int i = 0; i < Asize; i++) {
+            for(int j = Asize; j < vertecies.size(); j++) {
+                edges.add(new Edge(vertecies.get(i), vertecies.get(j)));
+            }
+        }
+    }
 
 }
