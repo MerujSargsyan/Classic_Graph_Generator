@@ -8,6 +8,8 @@ import java.awt.*;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Random;
+import java.awt.geom.Path2D;
+
 
 class DrawPanel extends JPanel {
     ArrayList<Vertex> vertecies;
@@ -20,10 +22,8 @@ class DrawPanel extends JPanel {
 
     private final int VERTEX_SIZE = 25;
     private final int CENTER_ADJUSTMENT = 12; //adjust circle around vertex
+    private final int CURVE_FACTOR = 12;
 
-    private final int LINE_DOT_COUNT = 100;
-    private final int LINE_WIDTH = 2;
-    private final int CURVE_FACTOR = 5;
 
     /** 
      * Creates a panel to draw on, creating the settings based on the above
@@ -86,7 +86,19 @@ class DrawPanel extends JPanel {
      * @param Graphics g used to draw the line
      */
     void paintEdge(Edge e, Graphics g) {
-        g.drawLine(e.start.x, e.start.y, e.end.x, e.end.y);
+        Graphics2D g2d = (Graphics2D) g;
+
+        Path2D path = new Path2D.Double();
+        Vertex firstControlPoint = new Vertex(e.start.x + CURVE_FACTOR, 
+            e.start.y + CURVE_FACTOR);
+        Vertex secondControlPoint = new Vertex(e.end.x - CURVE_FACTOR, 
+            e.end.y + CURVE_FACTOR);
+        path.moveTo(e.start.x, e.start.y);
+        path.curveTo(firstControlPoint.x, firstControlPoint.y, 
+                secondControlPoint.x, secondControlPoint.y,
+                e.end.x, e.end.y);
+
+        g2d.draw(path); // Draw the path onto the graphics context
     }
 
 }
