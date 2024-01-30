@@ -22,7 +22,8 @@ class DrawPanel extends JPanel {
 
     private final int VERTEX_SIZE = 25;
     private final int CENTER_ADJUSTMENT = 12; //adjust circle around vertex
-    private final int CURVE_FACTOR = 12;
+    private final int CURVE_FACTOR_MIN = 10;
+    private final int CURVE_FACTOR_MAX = 50;
 
 
     /** 
@@ -86,13 +87,15 @@ class DrawPanel extends JPanel {
      * @param Graphics g used to draw the line
      */
     void paintEdge(Edge e, Graphics g) {
+        int curveFactor = (int)(Math.random() * ((CURVE_FACTOR_MAX - CURVE_FACTOR_MIN) + 1));
+
         Graphics2D g2d = (Graphics2D) g;
 
         Path2D path = new Path2D.Double();
-        Vertex firstControlPoint = new Vertex(e.start.x + CURVE_FACTOR, 
-            e.start.y + CURVE_FACTOR);
-        Vertex secondControlPoint = new Vertex(e.end.x - CURVE_FACTOR, 
-            e.end.y + CURVE_FACTOR);
+        Vertex firstControlPoint = new Vertex(e.start.x + curveFactor, 
+            e.start.y + curveFactor);
+        Vertex secondControlPoint = new Vertex(e.end.x - curveFactor, 
+            e.end.y + curveFactor);
         path.moveTo(e.start.x, e.start.y);
         path.curveTo(firstControlPoint.x, firstControlPoint.y, 
                 secondControlPoint.x, secondControlPoint.y,
