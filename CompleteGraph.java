@@ -41,6 +41,7 @@ class CompleteGraph extends Graph {
     @Override
     void generateVertecies(int numVertecies) {
         int[] divisors = getDivisors(numVertecies);
+
         double currentClosest = Integer.MAX_VALUE; // aspect ratio closest to 1
 
         int rows = 0;
@@ -58,12 +59,23 @@ class CompleteGraph extends Graph {
             }
         }
 
+        //prime number of vertecies
+        if(divisors[0] == 1 && divisors[1] == numVertecies && numVertecies != 2) 
+        {
+            vertecies.add(new Vertex(STARTING_COL + (cols + 
+                (numVertecies / 10 + 1)) * OFFSET, + STARTING_ROW));
+            generateVertecies(numVertecies - 1);
+            return;
+        }
+
+
         for(int i = 0; i < rows; i++) {
             for(int j = 0; j < cols; j++) {
                 vertecies.add(new Vertex(STARTING_COL + j * OFFSET, 
                     STARTING_ROW + i * OFFSET));
             }
         }
+
     }
 
     /**
