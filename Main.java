@@ -2,15 +2,10 @@ class Main {
     public static void main(String args[]) {
         // "java Main -c (complete) (n)"
         // "java Main -c (complete) -b (bipartate) (A,B)"
-        if(args.length < 2) {
-            System.out.println("Improper usage");
-            return;
-        }
-
         if(args[0].equals("-c")) {
             if(args[1].equals("-b") ) {
                 if(args.length != 3) {
-                    System.out.println("Improper usage");
+                    System.out.println("Improper usage type -h for help");
                     return;
                 }
                 try {
@@ -30,6 +25,11 @@ class Main {
                     return;
                 }
             }
+        } else if(args[0].equals("-h")) {
+            System.out.println("Usage:");
+            System.out.println("Complete graph of n: '-c {number}");
+            System.out.println("Complete Bipartite Graph of (A,B):" + 
+                "'-c -b {number1}, {number2}");
         }
     }
 }
