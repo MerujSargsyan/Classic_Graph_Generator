@@ -15,16 +15,24 @@ javac *.java
 ## Usage:
 
 ```
-java Main -c n       // generates a complete graph of size n
-java Main -c -b A,B  // generates a complete bipartite graph with group 1 size A and group 2 size B
-java Main -h         // help
+// generates a complete graph of size n
+java Main -c n
+
+// generates a complete bipartite graph with group 1 size A and group 2 size B       
+java Main -c -b A,B
+
+// help
+java Main -h         
 ```
 
 ## Example:
 
 ```
-java Main -c 5       // generates a complete graph with 5 vertecies
-java Main -c -b 5,6  // generates a complete bipartite graph with group A of size 5 and group B of size 6
+// generates a complete graph with 5 vertecies
+java Main -c 5
+
+// generates a complete bipartite graph with group A of size 5 and group B of size 6
+java Main -c -b 5,6
 ```
 
 ## What I learned:
