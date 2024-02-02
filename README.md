@@ -1,19 +1,34 @@
 # Classic_Graph_Generator
-<h3>Generates classic graphs in graph theory such as connected graphs, trees, de Brujin cycles, etc.</h3>
+### Allows the user to generate classic graphs studied in graph theory
 
-<p>
-Brief Class explainations: <br>
-    - Display.java:   Creates a square display with black background. Then uses DrawPanel.java to draw given vertecies and edges. <br>
-    - DrawPanel.java: Helper class for display which uses java swing Graphics to draw on Display. <br>
-    - Graph.java:     Abstract class which sets a basis for all other child graphs. Stroes vertex and edge sets. <br>
-    - Vertex.java:    Simple way to store x and y position to draw on Display. <br>
-    - Edge.java:      Simple way to store connections between two vertecies. <br>
-<br>
-Graph explainations: <br>
-    - CompleteGraph.java: <br> 
-              A complete graph is a graph where given a certain number of vertecies, every vertex <br>
-              is connected to every other vertex via and edge. <br>
-    - CompleteBipartiteGraph.java: <br>
-              A Complete Bipartite Graph is similar to a complete Graph, however, vertecies are separated <br>
-              into two groups A and B. There are no edges between vertecies of the same group. <br>
-</p>
+## Installation:
+```
+cd path/to/your/local/repository
+git remote add origin https://github.com/MerujSargsyan/Classic_Graph_Generator
+git pull origin main
+#Files downloaded
+
+# Compile
+javac *.java
+```
+
+## Usage:
+
+```
+java Main -c n       // generates a complete graph of size n
+java Main -c -b A,B  // generates a complete bipartite graph with group 1 size A and group 2 size B
+java Main -h         // help
+```
+
+## Example:
+
+```
+java Main -c 5       // generates a complete graph with 5 vertecies
+java Main -c -b 5,6  // generates a complete bipartite graph with group A of size 5 and group B of size 6
+```
+
+## What I learned:
+<ul>
+    <li> Using bezier curves to make clear connections </li>
+    <li> Handling command line arguments of different sizes </li>
+</ul>
