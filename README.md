@@ -32,3 +32,5 @@ java Main -c -b 5,6  // generates a complete bipartite graph with group A of siz
     <li> Using bezier curves to make clear connections </li>
     <li> Handling command line arguments of different sizes </li>
 </ul>
+
+### Thank You. Hope you enjoy :)
