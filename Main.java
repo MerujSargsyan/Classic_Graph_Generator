@@ -29,7 +29,7 @@ class Main {
             System.out.println("Usage:");
             System.out.println("Complete graph of n: '-c {number}");
             System.out.println("Complete Bipartite Graph of (A,B):" + 
-                "'-c -b {number1}, {number2}");
+                "'-c -b {number1},{number2}");
         }
     }
 }
