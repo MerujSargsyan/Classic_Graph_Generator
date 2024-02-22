@@ -1,6 +1,8 @@
 # Classic_Graph_Generator
 ### Allows the user to generate classic graphs studied in graph theory
 
+### Demo:
+Check out my demo: [demo video](https://www.youtube.com/watch?v=sxroYRQsCUY&ab_channel=MeruzhanSargsyan)
 ## Installation:
 ```
 cd path/to/your/local/repository
