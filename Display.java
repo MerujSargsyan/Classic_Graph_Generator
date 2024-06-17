@@ -18,7 +18,7 @@ class Display extends JFrame{
      * initializes frame and panel using constants and DrawPanel class
      */
     Display(Graph g) {
-        frame = new JFrame();
+        frame = new JFrame("Classic Graph Gen");
         frame.setSize(WINDOW_SIZE_X + BONUS_X_SPACE, WINDOW_SIZE_Y);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
